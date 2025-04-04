@@ -22,9 +22,9 @@ public class TaquillaCine {
      */
     public static void main(String[] args) {
         
-        Usuario usuario1 = new UsuarioNino();
-        Usuario usuario2 = new UsuarioAdulto();
-        Usuario usuario3 = new UsuarioMayor();
+        Usuario usuario1 = new UsuarioNino("Heily","3244");
+        Usuario usuario2 = new UsuarioAdulto("Maria", "6799");
+        Usuario usuario3 = new UsuarioMayor("Mateo", "1292");
        
         Pelicula pelicula1 = new Pelicula(3000,"Avengers: Endgame");
         Pelicula pelicula2 = new Pelicula(5000,"Avengers: Endgame");
@@ -34,9 +34,9 @@ public class TaquillaCine {
         cine.agregarUsuario(usuario2);
         cine.agregarUsuario(usuario3);
        
-        System.out.println("Precio final Usuario Niño: $" + usuario1.calcularDescuentoFinal(pelicula1));
+        System.out.println("Precio final Usuario Nino: $" + usuario1.calcularDescuentoFinal(pelicula1));
         System.out.println("Precio final Usuario Adulto: $" + usuario2.calcularDescuentoFinal(pelicula2));
-        System.out.println("Precio final Usuario Adulto: $" + usuario3.calcularDescuentoFinal(pelicula1));
+        System.out.println("Precio final Usuario Adulto Mayor: $" + usuario3.calcularDescuentoFinal(pelicula1));
         
     }
     
