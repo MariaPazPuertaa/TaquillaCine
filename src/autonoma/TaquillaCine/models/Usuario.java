@@ -6,8 +6,33 @@ package autonoma.TaquillaCine.models;
 
 /**
  *
- * @author USUARIO
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
+ * @since 01042025
+ * @see 
+ * @version 1.0.0
  */
-public class Usuario {
+public abstract class Usuario {
+    
+    double valorDescuento;
+    
+
+    public Usuario(double valorDescuento) {
+        this.valorDescuento = valorDescuento;
+       
+    }
+
+    public double getValorDescuento() {
+        return valorDescuento;
+    }
+
+    public void setValorDescuento(double valorDescuento) {
+        this.valorDescuento = valorDescuento;
+    }
+
+ 
+    
+    
+            
+    public abstract double calcularDescuentoFinal(Pelicula pelicula);
     
 }
