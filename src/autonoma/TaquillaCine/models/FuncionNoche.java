@@ -12,11 +12,20 @@ package autonoma.TaquillaCine.models;
  * 
  */
 public class FuncionNoche extends Funcion {
-
+    
+    /**
+     * 
+     * @param porcentajeDescuento 
+     */
     public FuncionNoche(float porcentajeDescuento) {
         super(0.0f);
     }
 
+    /**
+     * 
+     * @param precioBase
+     * @return 
+     */
     @Override
     public double calcularPorcentajeDescuento(double precioBase) {
         return precioBase * getPorcentajeDescuento();

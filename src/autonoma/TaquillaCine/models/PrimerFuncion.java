@@ -13,10 +13,19 @@ package autonoma.TaquillaCine.models;
  */
 public class PrimerFuncion extends Funcion {
 
+    /**
+     * Crea una nueva instancia de la Primera Función, con un descuento fijo del 50%.
+     * @param porcentajeDescuento 
+     */
     public PrimerFuncion(float porcentajeDescuento) {
         super(0.50f);
     }
 
+    /**
+     * 
+     * @param precioBase
+     * @return 
+     */
     @Override
     public double calcularPorcentajeDescuento(double precioBase) {
         return precioBase * getPorcentajeDescuento();
