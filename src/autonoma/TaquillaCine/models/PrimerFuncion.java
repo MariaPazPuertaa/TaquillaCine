@@ -11,6 +11,14 @@ package autonoma.TaquillaCine.models;
  * @version 1.0.0
  * 
  */
-public class PrimerFuncion {
-    
+public class PrimerFuncion extends Funcion {
+
+    public PrimerFuncion(float porcentajeDescuento) {
+        super(0.50f);
+    }
+
+    @Override
+    public double calcularPorcentajeDescuento(double precioBase) {
+        return precioBase * getPorcentajeDescuento();
+    } 
 }

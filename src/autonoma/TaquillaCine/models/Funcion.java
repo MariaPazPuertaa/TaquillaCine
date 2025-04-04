@@ -11,6 +11,20 @@ package autonoma.TaquillaCine.models;
  * @version 1.0.0
  * 
  */
-public class Funcion {
-    
+public abstract class Funcion {
+    private float porcentajeDescuento;
+
+    public Funcion(float porcentajeDescuento) {
+        this.porcentajeDescuento = porcentajeDescuento;
+    }
+
+    public float getPorcentajeDescuento() {
+        return porcentajeDescuento;
+    }
+
+    public void setPorcentajeDescuento(float porcentajeDescuento) {
+        this.porcentajeDescuento = porcentajeDescuento;
+    }
+
+    public abstract double calcularPorcentajeDescuento(double precioBase);
 }

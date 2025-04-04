@@ -11,6 +11,15 @@ package autonoma.TaquillaCine.models;
  * @version 1.0.0
  * 
  */
-public class FuncionTarde {
+public class FuncionTarde extends Funcion {
+
+    public FuncionTarde(float porcentajeDescuento) {
+        super(0.10f);
+    }
+
+    @Override
+    public double calcularPorcentajeDescuento(double precioBase) {
+        return precioBase * getPorcentajeDescuento();
+    }
     
 }
