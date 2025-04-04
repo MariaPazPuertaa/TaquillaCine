@@ -15,11 +15,13 @@ package autonoma.TaquillaCine.models;
  */
 public class UsuarioAdulto extends Usuario{
 
-    public UsuarioAdulto() {
-        super(0);
-        
-       
+    public UsuarioAdulto(String nombre, String telefono) {
+        super(nombre, telefono, 0);
     }
+
+   
+       
+    
 
     @Override
     public double calcularDescuentoFinal(Pelicula pelicula) {

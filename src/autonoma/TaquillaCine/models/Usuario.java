@@ -47,12 +47,7 @@ public abstract class Usuario {
         this.valorDescuento = valorDescuento;
     }
     
-    
-   
-
  
-    
-    
             
     public abstract double calcularDescuentoFinal(Pelicula pelicula);
     
