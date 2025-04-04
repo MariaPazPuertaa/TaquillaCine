@@ -13,12 +13,30 @@ package autonoma.TaquillaCine.models;
  */
 public abstract class Usuario {
     
+    String nombre;
+    String telefono;
     double valorDescuento;
-    
 
-    public Usuario(double valorDescuento) {
+    public Usuario(String nombre, String telefono, double valorDescuento) {
+        this.nombre = nombre;
+        this.telefono = telefono;
         this.valorDescuento = valorDescuento;
-       
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public double getValorDescuento() {
@@ -28,6 +46,9 @@ public abstract class Usuario {
     public void setValorDescuento(double valorDescuento) {
         this.valorDescuento = valorDescuento;
     }
+    
+    
+   
 
  
     
