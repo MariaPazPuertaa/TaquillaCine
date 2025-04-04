@@ -12,9 +12,9 @@ package autonoma.TaquillaCine.models;
  * @version 1.0.0
  * 
  */
-public class UsuarioNiño  extends Usuario{
+public class UsuarioNino  extends Usuario{
     
-    public UsuarioNiño() {
+    public UsuarioNino() {
         super(500);
         
     }

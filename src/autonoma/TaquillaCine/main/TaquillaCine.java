@@ -9,7 +9,7 @@ import autonoma.TaquillaCine.models.Pelicula;
 import autonoma.TaquillaCine.models.Usuario;
 import autonoma.TaquillaCine.models.UsuarioAdulto;
 import autonoma.TaquillaCine.models.UsuarioMayor;
-import autonoma.TaquillaCine.models.UsuarioNiño;
+import autonoma.TaquillaCine.models.UsuarioNino;
 
 /**
  *
@@ -22,7 +22,7 @@ public class TaquillaCine {
      */
     public static void main(String[] args) {
         
-        Usuario usuario1 = new UsuarioNiño();
+        Usuario usuario1 = new UsuarioNino();
         Usuario usuario2 = new UsuarioAdulto();
         Usuario usuario3 = new UsuarioMayor();
        
