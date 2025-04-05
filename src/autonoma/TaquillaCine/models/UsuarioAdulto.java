@@ -19,8 +19,7 @@ public class UsuarioAdulto extends Usuario{
         super(nombre, telefono, 0);
     }
 
-   
-       
+    
     
 
     @Override
