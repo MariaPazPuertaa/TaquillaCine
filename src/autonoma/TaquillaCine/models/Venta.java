@@ -105,18 +105,25 @@ public class Venta {
      * @return Cadena de texto representando la factura
      */
     public String generarFactura() {
-        String factura = "===== FACTURA DE VENTA =====\n";
-        System.out.println("Fecha: " + fecha);
-        for (Boleta boleta : boletas) {
-            factura += "Película: " + boleta.getFuncion().getPelicula().getTitulo() + "\n";
-            factura += "Cliente: " + boleta.getUsuario().getNombre() + "\n";
-            factura += "Precio final: $" + boleta.getPrecioFinal() + "\n";
-            factura += "----------------------------\n";
-        }
+         String factura = "===== FACTURA DE VENTA =====\n";
+    System.out.println("Fecha: " + fecha);
 
-        factura += "TOTAL VENTA: $" + calcularTotal() + "\n";
-        factura += "============================\n";
+    for (Boleta boleta : boletas) {
+        double precioBase = boleta.getFuncion().getPelicula().getCostoBase();
+        double precioFinal = boleta.getPrecioFinal();
+        double descuento = precioBase - precioFinal;
 
-        return factura;
+        factura += "Pelicula: " + boleta.getFuncion().getPelicula().getTitulo() + "\n";
+        factura += "Cliente: " + boleta.getUsuario().getNombre() + "\n";
+        factura += "Precio original: $" + precioBase + "\n";
+        factura += "Descuento aplicado: $" + descuento + "\n";
+        factura += "Precio final: $" + precioFinal + "\n";
+        factura += "----------------------------\n";
     }
+
+    factura += "TOTAL VENTA: $" + calcularTotal() + "\n";
+    factura += "============================\n";
+
+    return factura;
+  }
 }

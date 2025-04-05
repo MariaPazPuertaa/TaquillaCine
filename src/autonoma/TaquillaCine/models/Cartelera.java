@@ -102,7 +102,7 @@ public class Cartelera {
     }
     public void agregarFuncion(Funcion funcion) {
         funciones.add(funcion);
-        System.out.println("Función agregada para: " + funcion.getPelicula().getTitulo());
+        System.out.println("Funcion agregada para: " + funcion.getPelicula().getTitulo());
     }
 
     public void mostrarFunciones() {
@@ -111,7 +111,7 @@ public class Cartelera {
         } else {
             System.out.println("Funciones en cartelera:");
             for (Funcion f : funciones) {
-                System.out.println("- Función de: " + f.getPelicula().getTitulo());
+                System.out.println("- Funcion de: " + f.getPelicula().getTitulo());
             }
         }
     }
