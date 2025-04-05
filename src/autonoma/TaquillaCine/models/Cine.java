@@ -22,16 +22,16 @@ public class Cine {
 
      // Constructor vacío
     public Cine() {
-    this.cartelera = new Cartelera();
-    this.ventas = new ArrayList<>();
-    this.usuarios = new ArrayList<>();
-   }
+        this.cartelera = new Cartelera();
+        this.ventas = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
+    }
 
     // Constructor con parámetros
     public Cine(Cartelera cartelera, ArrayList<Venta> ventas, ArrayList<Usuario> usuarios) {
-    this.cartelera = cartelera;
-    this.ventas = ventas;
-    this.usuarios = usuarios;
+        this.cartelera = cartelera;
+        this.ventas = ventas;
+        this.usuarios = usuarios;
    }
 
     public Cartelera getCartelera() {
@@ -57,9 +57,7 @@ public class Cine {
     public void setUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-    
-
-  
+      
 
     /**
      * Agrega un usuario a la lista del cine.
@@ -78,27 +76,28 @@ public class Cine {
      */
     
     public String eliminarUsuario(Usuario usuario) {
-    if (usuarios.remove(usuario)) {
-        return "Usuario eliminado correctamente.";
-    } else {
-        throw new NoSuchElementException("El usuario no existe.");
-    }
-} 
+        if (usuarios.remove(usuario)) {
+            return "Usuario eliminado correctamente.";
+        } else {
+            throw new NoSuchElementException("El usuario no existe.");
+        }
+    } 
     
     public void mostrarUsuario(){
         
     }
     public String venderBoleta(Usuario usuario, Funcion funcion, String fecha) {
-    Venta nuevaVenta = new Venta();
-    nuevaVenta.calcularTotal();
+        Venta nuevaVenta = new Venta();
+        nuevaVenta.calcularTotal();
 
-    if (nuevaVenta.getTotalVenta() < 0) {
-        return "Error: El valor de la boleta no puede ser negativo.";
+        if (nuevaVenta.getTotalVenta() < 0) {
+            return "Error: El valor de la boleta no puede ser negativo.";
+        }
+
+        this.ventas.add(nuevaVenta);
+        return " Boleta vendida a " + usuario.getNombre() + " por $" + nuevaVenta.getTotalVenta();
     }
-
-    this.ventas.add(nuevaVenta);
-    return " Boleta vendida a " + usuario.getNombre() + " por $" + nuevaVenta.getTotalVenta();
-}
+    
     public void generarFactura(){
         
     }
