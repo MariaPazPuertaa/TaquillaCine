@@ -219,9 +219,29 @@ public class Cine {
      * Genera y muestra por consola las facturas de todas las ventas realizadas.
      */
     public void generarFacturas() {
+        double totalVenta = calcularTotalGeneralDeBoletas(); // total de todas las ventas
         for (Venta venta : ventas) {
             System.out.println(venta.generarFactura());
         }
+        System.out.println("===========================================");
+        System.out.println("TOTAL GENERAL DE TODAS LAS VENTAS: $" + calcularTotalGeneralDeBoletas());
+        System.out.println("===========================================\n");
+    }
+    
+    /**
+     * Calcula el total de todas las boletas vendidas en todas las ventas.
+     * @return Retorna el total general de las boletas.
+     */
+    public double calcularTotalGeneralDeBoletas() {
+        double total = 0.0;
+
+        for (Venta venta : ventas) {
+            for (Boleta boleta : venta.getBoletas()) {
+                total += boleta.getPrecioFinal();
+            }
+        }
+
+        return total;
     }
 }
 
