@@ -14,12 +14,26 @@ import autonoma.TaquillaCine.exceptions.PrecioInvalidoException;
  * @version 1.0.0
  * 
  */
-public class UsuarioNino  extends Usuario{
+public class UsuarioNino extends Usuario{
 
+    /**
+     * Constructor de la subclase UsuarioNino.
+     * @param nombre Es el nombre del usuario.
+     * @param telefono Es el teléfono del usuario.
+     */
     public UsuarioNino(String nombre, String telefono) {
         super(nombre, telefono, 500);
     }
 
+    /**
+     * 
+     * Calcula el precio final aplicando un descuento fijo al precio base de la boleta.
+     * Si el resultado es negativo, lanza una excepción
+     *
+     * @param precioBase Es el precio original antes de aplicar el descuento.
+     * @return El precio final luego de aplicar el descuento.
+     * @throws PrecioInvalidoException si el precio final resulta ser menor que cero, se lanza está excepción.
+     */
    @Override
     public double calcularDescuentoFinal(double precioBase) {
         double precioFinal = precioBase - valorDescuento;

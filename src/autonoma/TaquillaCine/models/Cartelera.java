@@ -18,12 +18,14 @@ import java.util.NoSuchElementException;
  */
 public class Cartelera {
 
-    
+    /**
+     * Lista de funciones en cartelera.
+     */
     private ArrayList<Funcion> funciones;
     
 
     /**
-     * La lista de peliculas en cartelera.
+     * Lista de peliculas en cartelera.
      */
     private ArrayList<Pelicula> peliculas;
 

@@ -74,18 +74,34 @@ public class Boleta {
         this.precioBase = precioBase;
     }
 
+    /**
+     * Obtiene el usuario asociado a esta boleta.
+     * @return Retorna el objeto usuario actual.
+     */
     public Usuario getUsuario() {
         return usuario;
     }
 
+    /**
+     * Establece el usuario asociado a esta boleta.
+     * @param usuario Retorna el objeto Usuario que se desea asignar.
+     */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * Obtiene la función (película en cartelera) relacionada con esta boleta.
+     * @return Retorna el objeto Funcion actual.
+     */
     public Funcion getFuncion() {
         return funcion;
     }
 
+    /**
+     * Establece la función (película en cartelera) relacionada con esta boleta.
+     * @param funcion Retorna el objeto Funcion que se desea asignar.
+     */
     public void setFuncion(Funcion funcion) {
         this.funcion = funcion;
     }

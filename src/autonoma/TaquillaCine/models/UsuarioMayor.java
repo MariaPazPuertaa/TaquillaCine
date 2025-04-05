@@ -17,7 +17,7 @@ import autonoma.TaquillaCine.exceptions.PrecioInvalidoException;
 public class UsuarioMayor extends Usuario {
 
     /**
-     * Constructor de la subclase UsuarioMayor
+     * Constructor de la subclase UsuarioMayor.
      * @param nombre Es el nombre del usuario.
      * @param telefono Es el teléfono del usuario.
      */

@@ -15,8 +15,13 @@ package autonoma.TaquillaCine.models;
  * @version 1.0.0
  * 
  */
-public class UsuarioAdulto extends Usuario{
+public class UsuarioAdulto extends Usuario {
 
+    /**
+     * Constructor de la subclase UsuarioAdulto.
+     * @param nombre Es el nombre del usuario.
+     * @param telefono Es el teléfono del usuario.
+     */
     public UsuarioAdulto(String nombre, String telefono) {
         super(nombre, telefono, 0);
     }
