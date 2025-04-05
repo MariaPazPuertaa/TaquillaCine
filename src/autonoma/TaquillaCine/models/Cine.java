@@ -20,7 +20,7 @@ public class Cine {
     private ArrayList <Venta> venta;
     private ArrayList<Usuario> usuarios;
 
-    public Cine(Cartelera cartelera, ArrayList<Venta> venta, ArrayList<Usuario> usuarios) {
+    public Cine() {
         this.cartelera = cartelera;
         this.venta = venta;
         this.usuarios = usuarios;

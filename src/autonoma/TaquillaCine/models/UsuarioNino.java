@@ -4,6 +4,8 @@
  */
 package autonoma.TaquillaCine.models;
 
+import autonoma.TaquillaCine.exceptions.PrecioInvalidoException;
+
 /**
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
@@ -18,9 +20,13 @@ public class UsuarioNino  extends Usuario{
         super(nombre, telefono, 500);
     }
 
-    @Override
-    public double calcularDescuentoFinal(Pelicula pelicula) {
-        return pelicula.getCostoBase() -this.getValorDescuento();
+   @Override
+    public double calcularDescuentoFinal(double precioBase) {
+        double precioFinal = precioBase - valorDescuento;
+        if (precioFinal < 0) {
+            throw new PrecioInvalidoException();
+        }
+        return precioFinal;
     }
     
     

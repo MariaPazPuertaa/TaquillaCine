@@ -4,6 +4,8 @@
  */
 package autonoma.TaquillaCine.models;
 
+
+
 /**
  *
  * 
@@ -19,9 +21,11 @@ public class UsuarioAdulto extends Usuario{
         super(nombre, telefono, 0);
     }
 
+    
     @Override
-    public double calcularDescuentoFinal(Pelicula pelicula) {
-       return pelicula.getCostoBase()- this.getValorDescuento();
+    public double calcularDescuentoFinal(double precioBase) {
+        return precioBase; 
     }
+
     
 }
