@@ -7,24 +7,24 @@ package autonoma.TaquillaCine.models;
 /**
  *
  * @author Maria Paz Puerta Acevedo <mariaáp.puertaa@autonoma.edu.co>
- * @since 20250331
+ * @since 20250104
  * @version 1.0.0
  * 
  */
 public class PrimerFuncion extends Funcion {
 
     /**
-     * Crea una nueva instancia de la Primera Función, con un descuento fijo del 50%.
-     * @param porcentajeDescuento 
+     * Es el constructor de la subclase Primera Función, con un descuento fijo del 50%.
+     * @param porcentajeDescuento Es el valor del porcentaje de descuento.
      */
     public PrimerFuncion(float porcentajeDescuento) {
         super(0.50f);
     }
 
     /**
-     * 
-     * @param precioBase
-     * @return 
+     * Calcula el valor del descuento que se aplicará sobre el precio base.
+     * @param precioBase Es el precio base de la boleta.
+     * @return Retorna el monto del descuento aplicado a la boleta.
      */
     @Override
     public double calcularPorcentajeDescuento(double precioBase) {

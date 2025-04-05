@@ -7,7 +7,7 @@ package autonoma.TaquillaCine.models;
 /**
  *
  * @author Maria Paz Puerta Acevedo <mariaáp.puertaa@autonoma.edu.co>
- * @since 20250331
+ * @since 20250401
  * @version 1.0.0
  */
 public class Boleta {
