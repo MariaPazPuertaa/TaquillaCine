@@ -1,8 +1,22 @@
 package autonoma.TaquillaCine.models;
 
+
+/**
+ *
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
+ * @since 01042025
+ * @see 
+ * @version 1.0.0
+ */
+
 import java.util.ArrayList;
 
+
+
 public class Cine {
+    
+    private Cartelera cartelera;
+    private ArrayList <Venta> venta;
     private ArrayList<Usuario> usuarios;
     private ArrayList<Pelicula> peliculas;
 

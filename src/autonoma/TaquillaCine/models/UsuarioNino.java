@@ -18,9 +18,6 @@ public class UsuarioNino  extends Usuario{
         super(nombre, telefono, 500);
     }
 
-    
-   
-  
     @Override
     public double calcularDescuentoFinal(Pelicula pelicula) {
         return pelicula.getCostoBase() -this.getValorDescuento();

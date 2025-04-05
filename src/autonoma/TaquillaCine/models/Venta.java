@@ -12,18 +12,18 @@ package autonoma.TaquillaCine.models;
  * @version 1.0.0
  */
 public class Venta {
-    private float total_venta;
+    private float totalVenta;
 
     public Venta(float total_venta) {
-        this.total_venta = total_venta;
+        this.totalVenta = total_venta;
     }
 
     public float getTotal_venta() {
-        return total_venta;
+        return totalVenta;
     }
 
-    public void setTotal_venta(float total_venta) {
-        this.total_venta = total_venta;
+    public void setTotal_venta(float totalVenta) {
+        this.totalVenta = totalVenta;
     }
     
     

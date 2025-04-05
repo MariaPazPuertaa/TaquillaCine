@@ -4,6 +4,8 @@
  */
 package autonoma.TaquillaCine.models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Maria Paz Puerta Acevedo <mariaáp.puertaa@autonoma.edu.co>
@@ -12,5 +14,7 @@ package autonoma.TaquillaCine.models;
  * 
  */
 public class Cartelera {
+    
+    private ArrayList<Funcion> funciones;
     
 }
