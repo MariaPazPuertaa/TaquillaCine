@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Heily/TaquillaCine/src/autonoma/TaquillaCine/main/TaquillaCine.java</file>
             <file>file:/C:/Heily/TaquillaCine/src/autonoma/TaquillaCine/models/Cine.java</file>
             <file>file:/C:/Heily/TaquillaCine/src/autonoma/TaquillaCine/models/UsuarioMayor.java</file>
@@ -15,6 +16,14 @@
             <file>file:/C:/Heily/TaquillaCine/src/autonoma/TaquillaCine/models/UsuarioNino.java</file>
             <file>file:/C:/Heily/TaquillaCine/src/autonoma/TaquillaCine/models/Cartelera.java</file>
             <file>file:/C:/Heily/TaquillaCine/src/autonoma/TaquillaCine/models/FuncionNoche.java</file>
+=======
+            <file>file:/C:/Users/maria/OneDrive/Documentos/NetBeansProjects/TaquillaCine/src/autonoma/TaquillaCine/models/Boleta.java</file>
+            <file>file:/C:/Users/maria/OneDrive/Documentos/NetBeansProjects/TaquillaCine/src/autonoma/TaquillaCine/models/Funcion.java</file>
+            <file>file:/C:/Users/maria/OneDrive/Documentos/NetBeansProjects/TaquillaCine/src/autonoma/TaquillaCine/models/PrimerFuncion.java</file>
+            <file>file:/C:/Users/maria/OneDrive/Documentos/NetBeansProjects/TaquillaCine/src/autonoma/TaquillaCine/models/FuncionTarde.java</file>
+            <file>file:/C:/Users/maria/OneDrive/Documentos/NetBeansProjects/TaquillaCine/src/autonoma/TaquillaCine/models/FuncionNoche.java</file>
+            <file>file:/C:/Users/maria/OneDrive/Documentos/NetBeansProjects/TaquillaCine/src/autonoma/TaquillaCine/models/Cartelera.java</file>
+>>>>>>> 3fb83cfc39ef008391270701b6f0223b620d2929
         </group>
     </open-files>
 </project-private>
