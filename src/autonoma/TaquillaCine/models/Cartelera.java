@@ -100,11 +100,20 @@ public class Cartelera {
             }
         }
     }
+    /**
+     * Agrega una función a la cartelera y muestra un mensaje de confirmación.
+     *
+     * @param funcion Es la función que se desea agregar a la cartelera.
+     */
     public void agregarFuncion(Funcion funcion) {
         funciones.add(funcion);
         System.out.println("Funcion agregada para: " + funcion.getPelicula().getTitulo());
     }
 
+   /**
+    * Muestra por consola todas las funciones disponibles en la cartelera.
+    * Si no hay funciones registradas, informa que no hay funciones disponibles.
+    */
     public void mostrarFunciones() {
         if (funciones.isEmpty()) {
             System.out.println("No hay funciones disponibles.");
@@ -116,6 +125,12 @@ public class Cartelera {
         }
     }
 
+    /**
+     * Busca y retorna una función en la cartelera basada en el título de la película.
+     * @param titulo Es el título de la película que se desea buscar.
+     * @return Es la función correspondiente a la película encontrada.
+     * @throws NoSuchElementException Se lanza la excepción si no se encuentra ninguna función con el título indicado.
+     */
     public Funcion buscarFuncionPorPelicula(String titulo) {
         for (Funcion f : funciones) {
             if (f.getPelicula().getTitulo().equalsIgnoreCase(titulo)) {
@@ -125,12 +140,19 @@ public class Cartelera {
         throw new NoSuchElementException("No se encontró función para la película: " + titulo);
     }
 
+    /**
+     * Retorna la lista de funciones disponibles en la cartelera.
+     * @return Retorna una lista de objetos de Funcion.
+     */
     public ArrayList<Funcion> getFunciones() {
         return funciones;
     }
 
+    /**
+     * Retorna la lista de películas disponibles asociadas a las funciones.
+     * @return Retorna una lista de objetos de Pelicula.
+     */
     public ArrayList<Pelicula> getPeliculas() {
         return peliculas;
     }
-
 }

@@ -113,23 +113,22 @@ public class Boleta {
      * Calcula y actualiza el precio final de la boleta a partir del precio base
      * y el descuento proporcionado por la función.
      *
-     */
-    public float calcularPrecioFinal() {
-    
-        double precioBase = funcion.getPelicula().getCostoBase();
 
-      
+     * @param precioBase Es el precio original sin descuento.
+     * @param funcion Es el objeto de tipo Funcion que define el descuento a aplicar.
+     * @throws IllegalArgumentException Se lanzará está excepción cuando el precio final sea negativo.
+     */
+    public void calcularPrecioFinal(float precioBase, Funcion funcion) {
         double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
         double precioConDescuentoFuncion = precioBase - descuentoFuncion;
 
-        
-        double descuentoUsuario = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
+        double precioFinalConUsuario = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
 
-       
-        this.precioFinal = (float) (precioConDescuentoFuncion - descuentoUsuario);
+        if (precioFinalConUsuario < 0) {
+            throw new IllegalArgumentException("El precio final no puede ser negativo.");
+        }
 
-        if (this.precioFinal < 0) this.precioFinal = 0; 
+        this.precioFinal = (float) precioFinalConUsuario;
 
-        return precioFinal;
     }
 }

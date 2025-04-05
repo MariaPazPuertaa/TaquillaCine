@@ -175,24 +175,24 @@ public class Cine {
      * @return Mensaje de confirmación con el valor final pagado.
      */
     public String venderBoleta(Usuario usuario, Funcion funcion) {
-         double precioBase = funcion.getPelicula().getCostoBase();
+        double precioBase = funcion.getPelicula().getCostoBase();
 
  
-    double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
-    double precioConDescuentoFuncion = precioBase - descuentoFuncion;
+        double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
+        double precioConDescuentoFuncion = precioBase - descuentoFuncion;
 
   
-    double precioFinal = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
+        double precioFinal = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
 
-    if (precioFinal < 0) precioFinal = 0;
+        if (precioFinal < 0) precioFinal = 0;
 
  
-    Boleta boleta = new Boleta(usuario, funcion, (float) precioFinal);
-    Venta venta = new Venta();
-    venta.agregarBoleta(boleta);
-    ventas.add(venta);
+        Boleta boleta = new Boleta(usuario, funcion, (float) precioFinal);
+        Venta venta = new Venta();
+        venta.agregarBoleta(boleta);
+        ventas.add(venta);
 
-    return "Boleta vendida a " + usuario.getNombre() + " por $" + precioFinal;
+        return "Boleta vendida a " + usuario.getNombre() + " por $" + precioFinal;
     }
 
     /**
