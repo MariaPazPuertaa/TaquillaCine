@@ -96,7 +96,7 @@ public class Venta {
         String factura = "===== FACTURA DE VENTA =====\n";
 
         for (Boleta boleta : boletas) {
-            factura += "Película: " + boleta.getFuncion().getPelicula().getNombre() + "\n";
+            factura += "Película: " + boleta.getFuncion().getPelicula().getTitulo() + "\n";
             factura += "Cliente: " + boleta.getUsuario().getNombre() + "\n";
             factura += "Precio final: $" + boleta.getPrecioFinal() + "\n";
             factura += "----------------------------\n";

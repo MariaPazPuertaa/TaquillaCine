@@ -23,8 +23,9 @@ public abstract class Funcion {
      * Constructor de la clase Funcion
      * @param porcentajeDescuento Es el porcentaje de descuento que se desea aplicar a el precio de la boleta.
      */
-    public Funcion(float porcentajeDescuento) {
+    public Funcion(float porcentajeDescuento, Pelicula pelicula) {   
         this.porcentajeDescuento = porcentajeDescuento;
+        this.pelicula = pelicula;
     }
 
     /**
@@ -42,6 +43,15 @@ public abstract class Funcion {
     public void setPorcentajeDescuento(float porcentajeDescuento) {
         this.porcentajeDescuento = porcentajeDescuento;
     }
+
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+    
     
     /**
      * Método abstracto que debe ser implementado por las subclases para calcular el porcentaje de 
