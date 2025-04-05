@@ -17,14 +17,22 @@ import java.util.NoSuchElementException;
 public class Cine {
     
     private Cartelera cartelera;
-    private ArrayList <Venta> venta;
+    private ArrayList <Venta> ventas;
     private ArrayList<Usuario> usuarios;
 
+     // Constructor vacío
     public Cine() {
-        this.cartelera = cartelera;
-        this.venta = venta;
-        this.usuarios = usuarios;
-    }
+    this.cartelera = new Cartelera();
+    this.ventas = new ArrayList<>();
+    this.usuarios = new ArrayList<>();
+   }
+
+    // Constructor con parámetros
+    public Cine(Cartelera cartelera, ArrayList<Venta> ventas, ArrayList<Usuario> usuarios) {
+    this.cartelera = cartelera;
+    this.ventas = ventas;
+    this.usuarios = usuarios;
+   }
 
     public Cartelera getCartelera() {
         return cartelera;
@@ -35,11 +43,11 @@ public class Cine {
     }
 
     public ArrayList<Venta> getVenta() {
-        return venta;
+        return ventas;
     }
 
     public void setVenta(ArrayList<Venta> venta) {
-        this.venta = venta;
+        this.ventas = venta;
     }
 
     public ArrayList<Usuario> getUsuarios() {
@@ -80,12 +88,17 @@ public class Cine {
     public void mostrarUsuario(){
         
     }
-    public String venderBoleta(){
-        
-    
-        
+    public String venderBoleta(Usuario usuario, Funcion funcion, String fecha) {
+    Venta nuevaVenta = new Venta();
+    nuevaVenta.calcularTotal();
+
+    if (nuevaVenta.getTotalVenta() < 0) {
+        return "Error: El valor de la boleta no puede ser negativo.";
     }
-    
+
+    this.ventas.add(nuevaVenta);
+    return " Boleta vendida a " + usuario.getNombre() + " por $" + nuevaVenta.getTotalVenta();
+}
     public void generarFactura(){
         
     }
