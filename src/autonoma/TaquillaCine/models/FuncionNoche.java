@@ -15,20 +15,21 @@ public class FuncionNoche extends Funcion {
     
     /**
      * Constructor de la subclase FuncionTarde, con un descuento fijo del 0%
-     * @param porcentajeDescuento Es el valor del porcentaje de descuento. 
+     * @param pelicula
+     * @param descuento 
      */
-    public FuncionNoche(float porcentajeDescuento) {
-        super(0.0f);
+     public FuncionNoche(Pelicula pelicula, float descuento) {    
+        super(0, pelicula); 
     }
 
     /**
-     * Calcula el valor del descuento que se aplicará sobre el precio base.
-     * @param precioBase Es el precio base de la boleta.
-     * @return Retorna el monto del descuento aplicado a la boleta.
+     * Calcula el descuento aplicable al precio base de la boleta.
+     * 
+     * @param precioBase Precio original de la boleta.
+     * @return Monto del descuento.
      */
     @Override
     public double calcularPorcentajeDescuento(double precioBase) {
-        return precioBase * getPorcentajeDescuento();
+        return precioBase * getPorcentajeDescuento(); 
     }
-    
 }

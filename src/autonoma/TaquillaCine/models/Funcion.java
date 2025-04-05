@@ -26,8 +26,9 @@ public abstract class Funcion {
     /**
      * Constructor de la clase Funcion
      * @param porcentajeDescuento Es el porcentaje de descuento que se desea aplicar a el precio de la boleta.
+     * @param pelicula
      */
-    public Funcion(float porcentajeDescuento) {   
+    public Funcion(float porcentajeDescuento, Pelicula pelicula) {
         this.porcentajeDescuento = porcentajeDescuento;
         this.pelicula = pelicula;
     }
