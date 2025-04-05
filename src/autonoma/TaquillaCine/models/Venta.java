@@ -26,8 +26,7 @@ public class Venta {
     /**
      * Total acumulado de la venta (suma de precios finales de las boletas).
      */
-    private float totalVenta;
-    
+  private double totalVenta;
     /**
      * Fecha de la factura de la venta.
      */
@@ -57,16 +56,23 @@ public class Venta {
      * @param boleta Boleta a agregar
      */
     public void agregarBoleta(Boleta boleta) {
+        // Calculamos el precio final de la boleta al agregarla
+        boleta.calcularPrecioFinal();  // Esto asegurará que el precio final esté calculado
+
+        // Agregamos la boleta a la lista de boletas
         this.boletas.add(boleta);
+
+        // Actualizamos el total de la venta sumando el precio final de la boleta
         this.totalVenta += boleta.getPrecioFinal();
     }
+
 
     /**
      * Retorna el total de la venta.
      * 
      * @return Total de la venta
      */
-    public float getTotalVenta() {
+    public double getTotalVenta() {
         return totalVenta;
     }
 
@@ -84,17 +90,18 @@ public class Venta {
      * 
      * @return Total calculado de la venta
      */
-    public float calcularTotal() {
-        float total = 0;
-        for (Boleta boleta : boletas) {
-            total += boleta.getPrecioFinal();
-        }
-        this.totalVenta = total;
-        return total;
+   public double calcularTotal() {
+    double total = 0;  // Cambiar de float a double
+    for (Boleta boleta : boletas) {
+        total += boleta.getPrecioFinal();
     }
+    this.totalVenta = total;
+    return total;
+}
 
     /**
      * Obtiene la fecha de la factura de la venta.
+     * 
      * @return Retorna la fecha de la factura de la venta.
      */
     public LocalDate getFecha() {
@@ -103,12 +110,12 @@ public class Venta {
 
     /**
      * Establece la fecha de la factura de la venta.
+     * 
      * @param fecha Es la fecha de la factura de la venta.
      */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-    
     
     /**
      * Genera una factura en formato de texto con los detalles de cada boleta.
@@ -118,26 +125,33 @@ public class Venta {
      */
     public String generarFactura() {
         String factura = "===== FACTURA DE VENTA =====\n";
-        System.out.println("Fecha: " + fecha);
-
-        for (Boleta boleta : boletas) {
-            double precioBase = boleta.getFuncion().getPelicula().getCostoBase();
+        factura += "Fecha: " + fecha + "\n";
 
        
+      
+
+        // Iteramos por todas las boletas y generamos la factura
+        for (Boleta boleta : boletas) {
+            double precioBase = boleta.getFuncion().getPelicula().getCostoBase();
             double descuentoFuncion = boleta.getFuncion().calcularPorcentajeDescuento(precioBase);
             double precioConDescuentoFuncion = precioBase - descuentoFuncion;
-
             double precioFinal = boleta.getPrecioFinal();
             double descuentoUsuario = precioConDescuentoFuncion - precioFinal;
 
+            
             factura += "Pelicula: " + boleta.getFuncion().getPelicula().getTitulo() + "\n";
             factura += "Cliente: " + boleta.getUsuario().getNombre() + "\n";
             factura += "Precio original: $" + precioBase + "\n";
             factura += "Descuento por funcion: $" + descuentoFuncion + "\n";
             factura += "Descuento por tipo de usuario: $" + descuentoUsuario + "\n";
+            factura += "Total boleta: $ " + precioFinal + "\n";
             factura += "----------------------------\n";
+
+            
+           
         }
 
+        
         factura += "TOTAL VENTA: $" + calcularTotal() + "\n";
         factura += "============================\n";
 

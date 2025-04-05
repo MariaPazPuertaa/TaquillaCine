@@ -26,6 +26,8 @@ public class Cine {
      * Lista de usuarios registrados en el sistema del cine.
      */
     private ArrayList<Usuario> usuarios;
+    
+    private double totalVentas;
 
     // Constructor por defecto
     /**
@@ -36,6 +38,7 @@ public class Cine {
         this.cartelera = new Cartelera();
         this.ventas = new ArrayList<>();
         this.usuarios = new ArrayList<>();
+        this.totalVentas = 0.0; 
     }
 
     // Constructor con parámetros
@@ -101,6 +104,14 @@ public class Cine {
         this.usuarios = usuarios;
     }
 
+    public double getTotalVentas() {
+        return totalVentas;
+    }
+
+    public void setTotalVentas(double totalVentas) {
+        this.totalVentas = totalVentas;
+    }
+    
     /**
      * Agrega un usuario a la lista de usuarios registrados.
      * @param usuario El Usuario que se desea agregar.
@@ -187,14 +198,23 @@ public class Cine {
         if (precioFinal < 0) precioFinal = 0;
 
  
-        Boleta boleta = new Boleta(usuario, funcion, (float) precioFinal);
+      
+        Boleta boleta = new Boleta(usuario, funcion);       
+
+
+        boleta.calcularPrecioFinal();
+
+
         Venta venta = new Venta();
         venta.agregarBoleta(boleta);
+
+
         ventas.add(venta);
+        
+         totalVentas += precioFinal;
 
-        return "Boleta vendida a " + usuario.getNombre() + " por $" + precioFinal;
-    }
-
+        return "Boleta vendida a " + usuario.getNombre() + " por $" + boleta.getPrecioFinal();
+   }
     /**
      * Genera y muestra por consola las facturas de todas las ventas realizadas.
      */

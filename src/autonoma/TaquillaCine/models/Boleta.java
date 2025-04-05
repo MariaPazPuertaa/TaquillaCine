@@ -34,16 +34,15 @@ public class Boleta {
     * Constructor de la clase Boleta
     * @param usuario
     * @param funcion
-    * @param precioFinal Es el precio final de la boleta luego de aplicar los descuentos respectivos.
     * @param precioBase Es el precio base de la boleta.
     */
-    public Boleta(Usuario usuario, Funcion funcion, float precioFinal) {     
+    public Boleta(Usuario usuario, Funcion funcion) {
         this.usuario = usuario;
         this.funcion = funcion;
-        this.precioFinal = precioFinal;
         this.precioBase = (float) funcion.getPelicula().getCostoBase();
+        // Calculamos el precio final en el momento de la creación de la boleta
+        calcularPrecioFinal();
     }
-
     /**
      * Obtiene el precio final de la boleta.
      * @return Precio final con el descuento aplicado.
@@ -114,21 +113,26 @@ public class Boleta {
      * y el descuento proporcionado por la función.
      *
 
-     * @param precioBase Es el precio original sin descuento.
-     * @param funcion Es el objeto de tipo Funcion que define el descuento a aplicar.
      * @throws IllegalArgumentException Se lanzará está excepción cuando el precio final sea negativo.
      */
-    public void calcularPrecioFinal(float precioBase, Funcion funcion) {
-        double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
-        double precioConDescuentoFuncion = precioBase - descuentoFuncion;
+    public float calcularPrecioFinal() {
+    // Calcular el descuento por función
+    double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
+    double precioConDescuentoFuncion = precioBase - descuentoFuncion;
 
-        double precioFinalConUsuario = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
+    // Calcular el descuento por usuario
+    double precioFinalConUsuario = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
 
-        if (precioFinalConUsuario < 0) {
-            throw new IllegalArgumentException("El precio final no puede ser negativo.");
-        }
-
-        this.precioFinal = (float) precioFinalConUsuario;
-
+    // Verificar que el precio final no sea negativo
+    if (precioFinalConUsuario < 0) {
+        throw new IllegalArgumentException("El precio final no puede ser negativo.");
     }
+
+    // Establecer el precio final de la boleta
+    this.precioFinal = (float) precioFinalConUsuario;
+
+    // Retornar el precio final calculado
+    return this.precioFinal;
+}
+
 }
