@@ -11,6 +11,16 @@ package autonoma.TaquillaCine.models;
  * @version 1.0.0
  */
 public class Boleta {
+     /**
+     * Usuario que compra la boleta.
+     */
+    private Usuario usuario;
+
+    /**
+     * Función de cine a la que corresponde esta boleta.
+     */
+    private Funcion funcion;
+
     /**
      * Es el precioFinal de la boleta luego de aplicar todos los descuentos respectivos.
      */
@@ -25,7 +35,9 @@ public class Boleta {
     * @param precioFinal Es el precio final de la boleta luego de aplicar los descuentos respectivos.
     * @param precioBase Es el precio base de la boleta.
     */
-    public Boleta(float precioFinal, float precioBase) {
+    public Boleta(Usuario usuario, Funcion funcion, float precioFinal, float precioBase) {     
+        this.usuario = usuario;
+        this.funcion = funcion;
         this.precioFinal = precioFinal;
         this.precioBase = precioBase;
     }
@@ -61,6 +73,23 @@ public class Boleta {
     public void setPrecioBase(float precioBase) {
         this.precioBase = precioBase;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Funcion getFuncion() {
+        return funcion;
+    }
+
+    public void setFuncion(Funcion funcion) {
+        this.funcion = funcion;
+    }
+    
 
     /**
      * Calcula y actualiza el precio final de la boleta a partir del precio base

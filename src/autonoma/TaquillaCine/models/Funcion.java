@@ -16,6 +16,8 @@ public abstract class Funcion {
      * Porcentaje de descuento que se aplica.
      */
     private float porcentajeDescuento;
+     private Pelicula pelicula;
+
 
     /**
      * Constructor de la clase Funcion
