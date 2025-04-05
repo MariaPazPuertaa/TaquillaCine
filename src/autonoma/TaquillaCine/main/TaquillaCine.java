@@ -19,7 +19,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author USUARIO
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
+ * @since 01042025
+ * @see 
+ * @version 1.0.0
  */
 public class TaquillaCine {
 
