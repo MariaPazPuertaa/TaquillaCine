@@ -10,6 +10,7 @@ package autonoma.TaquillaCine.models;
  */
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 
 
@@ -18,55 +19,74 @@ public class Cine {
     private Cartelera cartelera;
     private ArrayList <Venta> venta;
     private ArrayList<Usuario> usuarios;
-    private ArrayList<Pelicula> peliculas;
 
-    public Cine() {
-        this.usuarios = new ArrayList<>();
-        this.peliculas = new ArrayList<>();
+    public Cine(Cartelera cartelera, ArrayList<Venta> venta, ArrayList<Usuario> usuarios) {
+        this.cartelera = cartelera;
+        this.venta = venta;
+        this.usuarios = usuarios;
     }
+
+    public Cartelera getCartelera() {
+        return cartelera;
+    }
+
+    public void setCartelera(Cartelera cartelera) {
+        this.cartelera = cartelera;
+    }
+
+    public ArrayList<Venta> getVenta() {
+        return venta;
+    }
+
+    public void setVenta(ArrayList<Venta> venta) {
+        this.venta = venta;
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+    
+
+  
 
     /**
      * Agrega un usuario a la lista del cine.
      * @param usuario Usuario a agregar
+     * @return 
      */
-    public void agregarUsuario(Usuario usuario) {
+    public String agregarUsuario(Usuario usuario) {
         usuarios.add(usuario);
-        System.out.println("Usuario agregado correctamente.");
+        return "Usuario agregado correctamente.";
     }
 
     /**
      * Elimina un usuario de la lista si existe.
      * @param usuario Usuario a eliminar
+     * @return 
      */
-    public void eliminarUsuario(Usuario usuario) {
-        if (usuarios.remove(usuario)) {
-            System.out.println("Usuario eliminado correctamente.");
-        } else {
-            System.out.println("El usuario no existe.");
-        }
+    
+    public String eliminarUsuario(Usuario usuario) {
+    if (usuarios.remove(usuario)) {
+        return "Usuario eliminado correctamente.";
+    } else {
+        throw new NoSuchElementException("El usuario no existe.");
     }
-
-    /**
-     * Agrega una película al cine.
-     * @param pelicula Película a agregar
-     */
-    public void agregarPelicula(Pelicula pelicula) {
-        peliculas.add(pelicula);
-        System.out.println("Película agregada correctamente.");
+} 
+    
+    public void mostrarUsuario(){
+        
     }
-
-    /**
-     * Elimina una película por su nombre.
-     * @param nombre Nombre de la película a eliminar
-     */
-    public void eliminarPelicula(String nombre) {
-        for (Pelicula p : peliculas) {
-            if (p.getTitulo().equalsIgnoreCase(nombre)) {
-                peliculas.remove(p);
-                System.out.println("Película eliminada correctamente.");
-                return;
-            }
-        }
-        System.out.println("La película no se encontró.");
+    public String venderBoleta(){
+        
+    
+        
+    }
+    
+    public void generarFactura(){
+        
     }
 }
