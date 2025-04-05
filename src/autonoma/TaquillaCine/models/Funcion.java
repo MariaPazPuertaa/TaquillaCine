@@ -16,7 +16,11 @@ public abstract class Funcion {
      * Porcentaje de descuento que se aplica.
      */
     private float porcentajeDescuento;
-     private Pelicula pelicula;
+    
+    /**
+     * Película asociada a la función.
+     */
+    private Pelicula pelicula;
 
 
     /**
@@ -45,10 +49,18 @@ public abstract class Funcion {
         this.porcentajeDescuento = porcentajeDescuento;
     }
 
+    /**
+     * Obtiene la película asociada a esta función.
+     * @return Retorna un objeto de tipo Pelicula.
+     */
     public Pelicula getPelicula() {
         return pelicula;
     }
 
+    /**
+     * Establece una película a esta función.
+     * @param pelicula Es la pelicula Película que se va a asociar a la función.
+     */
     public void setPelicula(Pelicula pelicula) {
         this.pelicula = pelicula;
     }

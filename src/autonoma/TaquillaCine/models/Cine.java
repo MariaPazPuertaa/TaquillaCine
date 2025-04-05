@@ -1,19 +1,7 @@
 package autonoma.TaquillaCine.models;
 
-
-/**
- *
- * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
- * @since 01042025
- * @see 
- * @version 1.0.0
- */
-
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-
-
-
 
 public class Cine {
 
@@ -60,13 +48,11 @@ public class Cine {
         this.usuarios = usuarios;
     }
 
-    // Agregar usuario
     public String agregarUsuario(Usuario usuario) {
         usuarios.add(usuario);
         return "Usuario agregado correctamente.";
     }
 
-    // Eliminar usuario
     public String eliminarUsuario(Usuario usuario) {
         if (usuarios.remove(usuario)) {
             return "Usuario eliminado correctamente.";
@@ -75,14 +61,12 @@ public class Cine {
         }
     }
 
-    // Mostrar usuarios registrados
     public void mostrarUsuarios() {
         for (Usuario u : usuarios) {
             System.out.println(u);
         }
     }
 
-    // Delegar manejo de películas a la cartelera
     public void agregarPelicula(Pelicula pelicula) {
         cartelera.crearPelicula(pelicula);
     }
@@ -95,34 +79,31 @@ public class Cine {
         cartelera.mostrarPeliculas();
     }
 
-    
     public void agregarFuncion(Funcion funcion) {
         cartelera.agregarFuncion(funcion);
     }
 
-    
-   public String venderBoleta(Usuario usuario, Funcion funcion) {
-    double precioBase = funcion.getPelicula().getCostoBase();
-    double descuentoUsuario = usuario.calcularDescuentoFinal(precioBase);
-    double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
-    double precioFinal = precioBase - descuentoUsuario - descuentoFuncion;
+    public String venderBoleta(Usuario usuario, Funcion funcion) {
+        double precioBase = funcion.getPelicula().getCostoBase();
+        double descuentoUsuario = usuario.calcularDescuentoFinal(precioBase);
+        double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
+        double precioFinal = precioBase - descuentoUsuario - descuentoFuncion;
 
-    if (precioFinal < 0) precioFinal = 0;
+        if (precioFinal < 0) precioFinal = 0;
 
-    Boleta boleta = new Boleta(usuario, funcion, (float) precioFinal);
+        Boleta boleta = new Boleta(usuario, funcion, (float) precioFinal);
 
-    Venta venta = new Venta();
-    venta.agregarBoleta(boleta);
+        Venta venta = new Venta();
+        venta.agregarBoleta(boleta);
 
-    ventas.add(venta);
+        ventas.add(venta);
 
-    return "Boleta vendida a " + usuario.getNombre() + " por $" + precioFinal;
-}
-
+        return "Boleta vendida a " + usuario.getNombre() + " por $" + precioFinal;
+    }
 
     public void generarFacturas() {
         for (Venta venta : ventas) {
-            venta.generarFactura();
+            System.out.println(venta.generarFactura());
         }
     }
 }
