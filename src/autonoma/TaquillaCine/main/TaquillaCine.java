@@ -10,6 +10,7 @@ import autonoma.TaquillaCine.models.Funcion;
 import autonoma.TaquillaCine.models.FuncionNoche;
 import autonoma.TaquillaCine.models.FuncionTarde;
 import autonoma.TaquillaCine.models.Pelicula;
+import autonoma.TaquillaCine.models.PrimerFuncion;
 import autonoma.TaquillaCine.models.Usuario;
 import autonoma.TaquillaCine.models.UsuarioAdulto;
 import autonoma.TaquillaCine.models.UsuarioMayor;
@@ -34,9 +35,14 @@ public class TaquillaCine {
         Pelicula pelicula1 = new Pelicula(3000, "Avengers");
         Pelicula pelicula2 = new Pelicula(6000, "Avatar 2");
 
+        System.out.println(usuario1.calcularDescuentoFinal(50000));
         Funcion funcion1 = new FuncionNoche(pelicula1);
         Funcion funcion2 = new FuncionTarde(pelicula2);
-
+        Funcion funcion3 = new PrimerFuncion(pelicula2);
+         
+        System.out.println(funcion1.calcularPorcentajeDescuento(2000));
+        System.out.println(funcion3.calcularPorcentajeDescuento(6000));
+        
         Cartelera cartelera = new Cartelera();
         cartelera.agregarFuncion(funcion1);
         cartelera.agregarFuncion(funcion2);
