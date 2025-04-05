@@ -15,10 +15,11 @@ public class FuncionTarde extends Funcion {
 
     /**
      * Constructor de la subclase FuncionTarde, con un descuento fijo del 10%
+     * @param pelicula
      * @param porcentajeDescuento Es el valor del porcentaje de descuento. 
      */
-    public FuncionTarde(float porcentajeDescuento) {
-        super(0.10f);
+    public FuncionTarde(Pelicula pelicula,float porcentajeDescuento) {
+        super(0.10f,pelicula);
     }
 
     /**
