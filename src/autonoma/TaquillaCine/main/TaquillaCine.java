@@ -32,10 +32,10 @@ public class TaquillaCine {
         Usuario usuario3 = new UsuarioMayor("Mateo", "1292");
 
         Pelicula pelicula1 = new Pelicula(3000, "Avengers");
-        Pelicula pelicula2 = new Pelicula(5000, "Avatar 2");
+        Pelicula pelicula2 = new Pelicula(6000, "Avatar 2");
 
-        Funcion funcion1 = new FuncionNoche(pelicula1, 0.2f);
-        Funcion funcion2 = new FuncionTarde(pelicula2, 0.1f);
+        Funcion funcion1 = new FuncionNoche(pelicula1);
+        Funcion funcion2 = new FuncionTarde(pelicula2);
 
         Cartelera cartelera = new Cartelera();
         cartelera.agregarFuncion(funcion1);

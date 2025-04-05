@@ -18,7 +18,7 @@ public class FuncionTarde extends Funcion {
      * @param pelicula
      * @param porcentajeDescuento Es el valor del porcentaje de descuento. 
      */
-    public FuncionTarde(Pelicula pelicula,float porcentajeDescuento) {
+    public FuncionTarde(Pelicula pelicula) {
         super(0.10f,pelicula);
     }
 

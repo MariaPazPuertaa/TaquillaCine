@@ -16,9 +16,8 @@ public class PrimerFuncion extends Funcion {
     /**
      * Es el constructor de la subclase Primera Función, con un descuento fijo del 50%.
      * @param pelicula
-     * @param porcentajeDescuento Es el valor del porcentaje de descuento.
      */
-    public PrimerFuncion(Pelicula pelicula,float porcentajeDescuento) {
+    public PrimerFuncion(Pelicula pelicula) {
         super(0.50f,pelicula);
     }
 

@@ -105,18 +105,24 @@ public class Venta {
      * @return Cadena de texto representando la factura
      */
     public String generarFactura() {
-         String factura = "===== FACTURA DE VENTA =====\n";
+    String factura = "===== FACTURA DE VENTA =====\n";
     System.out.println("Fecha: " + fecha);
 
     for (Boleta boleta : boletas) {
         double precioBase = boleta.getFuncion().getPelicula().getCostoBase();
+
+       
+        double descuentoFuncion = boleta.getFuncion().calcularPorcentajeDescuento(precioBase);
+        double precioConDescuentoFuncion = precioBase - descuentoFuncion;
+
         double precioFinal = boleta.getPrecioFinal();
-        double descuento = precioBase - precioFinal;
+        double descuentoUsuario = precioConDescuentoFuncion - precioFinal;
 
         factura += "Pelicula: " + boleta.getFuncion().getPelicula().getTitulo() + "\n";
         factura += "Cliente: " + boleta.getUsuario().getNombre() + "\n";
         factura += "Precio original: $" + precioBase + "\n";
-        factura += "Descuento aplicado: $" + descuento + "\n";
+        factura += "Descuento por funcion: $" + descuentoFuncion + "\n";
+        factura += "Descuento por tipo de usuario: $" + descuentoUsuario + "\n";
         factura += "Precio final: $" + precioFinal + "\n";
         factura += "----------------------------\n";
     }
@@ -125,5 +131,5 @@ public class Venta {
     factura += "============================\n";
 
     return factura;
-  }
+}
 }

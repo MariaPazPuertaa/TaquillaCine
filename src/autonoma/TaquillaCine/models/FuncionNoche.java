@@ -18,8 +18,8 @@ public class FuncionNoche extends Funcion {
      * @param pelicula
      * @param descuento 
      */
-     public FuncionNoche(Pelicula pelicula, float descuento) {    
-        super(0, pelicula); 
+     public FuncionNoche(Pelicula pelicula) {    
+        super(0.0f, pelicula); 
     }
 
     /**

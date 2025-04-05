@@ -91,21 +91,24 @@ public class Cine {
     }
 
     public String venderBoleta(Usuario usuario, Funcion funcion) {
-        double precioBase = funcion.getPelicula().getCostoBase();
-        double descuentoUsuario = usuario.calcularDescuentoFinal(precioBase);
-        double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
-        double precioFinal = precioBase - descuentoUsuario - descuentoFuncion;
+         double precioBase = funcion.getPelicula().getCostoBase();
 
-        if (precioFinal < 0) precioFinal = 0;
+ 
+    double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
+    double precioConDescuentoFuncion = precioBase - descuentoFuncion;
 
-        Boleta boleta = new Boleta(usuario, funcion, (float) precioFinal);
+  
+    double precioFinal = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
 
-        Venta venta = new Venta();
-        venta.agregarBoleta(boleta);
+    if (precioFinal < 0) precioFinal = 0;
 
-        ventas.add(venta);
+ 
+    Boleta boleta = new Boleta(usuario, funcion, (float) precioFinal);
+    Venta venta = new Venta();
+    venta.agregarBoleta(boleta);
+    ventas.add(venta);
 
-        return "Boleta vendida a " + usuario.getNombre() + " por $" + precioFinal;
+    return "Boleta vendida a " + usuario.getNombre() + " por $" + precioFinal;
     }
 
     public void generarFacturas() {

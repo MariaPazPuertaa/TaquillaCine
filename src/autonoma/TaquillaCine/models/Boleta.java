@@ -117,13 +117,15 @@ public class Boleta {
      * @param funcion Es el objeto de tipo Funcion que define el descuento a aplicar.
      */
     public void calcularPrecioFinal(float precioBase, Funcion funcion) {
-        double descuento = funcion.calcularPorcentajeDescuento(precioBase);
-        float resultado = (float)(precioBase - descuento);
-    
-        if (resultado < 0) {
-            throw new IllegalArgumentException("El precio final no puede ser negativo.");
-        }
-    
-        this.precioFinal = resultado;
+    double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
+    double precioConDescuentoFuncion = precioBase - descuentoFuncion;
+
+    double precioFinalConUsuario = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
+
+    if (precioFinalConUsuario < 0) {
+        throw new IllegalArgumentException("El precio final no puede ser negativo.");
     }
+
+    this.precioFinal = (float) precioFinalConUsuario;
+}
 }
