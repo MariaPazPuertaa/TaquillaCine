@@ -4,6 +4,7 @@
  */
 package autonoma.TaquillaCine.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -26,6 +27,7 @@ public class Venta {
      * Total acumulado de la venta (suma de precios finales de las boletas).
      */
     private float totalVenta;
+    private LocalDate fecha;
 
     /**
      * Constructor de la clase Venta. Inicializa la lista de boletas y el total en 0.
@@ -33,6 +35,7 @@ public class Venta {
     public Venta() {
         this.boletas = new ArrayList<>();
         this.totalVenta = 0;
+        this.fecha = LocalDate.now();
     }
 
     /**
@@ -86,6 +89,15 @@ public class Venta {
         return total;
     }
 
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+    
+    
     /**
      * Genera una factura en formato de texto con los detalles de cada boleta.
      * Incluye nombre del cliente, película y precio final de cada boleta.
@@ -94,7 +106,7 @@ public class Venta {
      */
     public String generarFactura() {
         String factura = "===== FACTURA DE VENTA =====\n";
-
+        System.out.println("Fecha: " + fecha);
         for (Boleta boleta : boletas) {
             factura += "Película: " + boleta.getFuncion().getPelicula().getTitulo() + "\n";
             factura += "Cliente: " + boleta.getUsuario().getNombre() + "\n";

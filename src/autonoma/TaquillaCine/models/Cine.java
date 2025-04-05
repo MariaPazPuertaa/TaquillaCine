@@ -14,26 +14,28 @@ import java.util.NoSuchElementException;
 
 
 
+
 public class Cine {
-    
+
     private Cartelera cartelera;
-    private ArrayList <Venta> ventas;
+    private ArrayList<Venta> ventas;
     private ArrayList<Usuario> usuarios;
 
-     // Constructor vacío
+    // Constructor por defecto
     public Cine() {
-    this.cartelera = new Cartelera();
-    this.ventas = new ArrayList<>();
-    this.usuarios = new ArrayList<>();
-   }
+        this.cartelera = new Cartelera();
+        this.ventas = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
+    }
 
     // Constructor con parámetros
     public Cine(Cartelera cartelera, ArrayList<Venta> ventas, ArrayList<Usuario> usuarios) {
-    this.cartelera = cartelera;
-    this.ventas = ventas;
-    this.usuarios = usuarios;
-   }
+        this.cartelera = cartelera;
+        this.ventas = ventas;
+        this.usuarios = usuarios;
+    }
 
+    // Getters y setters
     public Cartelera getCartelera() {
         return cartelera;
     }
@@ -42,12 +44,12 @@ public class Cine {
         this.cartelera = cartelera;
     }
 
-    public ArrayList<Venta> getVenta() {
+    public ArrayList<Venta> getVentas() {
         return ventas;
     }
 
-    public void setVenta(ArrayList<Venta> venta) {
-        this.ventas = venta;
+    public void setVentas(ArrayList<Venta> ventas) {
+        this.ventas = ventas;
     }
 
     public ArrayList<Usuario> getUsuarios() {
@@ -57,49 +59,70 @@ public class Cine {
     public void setUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-    
 
-  
-
-    /**
-     * Agrega un usuario a la lista del cine.
-     * @param usuario Usuario a agregar
-     * @return 
-     */
+    // Agregar usuario
     public String agregarUsuario(Usuario usuario) {
         usuarios.add(usuario);
         return "Usuario agregado correctamente.";
     }
 
-    /**
-     * Elimina un usuario de la lista si existe.
-     * @param usuario Usuario a eliminar
-     * @return 
-     */
-    
+    // Eliminar usuario
     public String eliminarUsuario(Usuario usuario) {
-    if (usuarios.remove(usuario)) {
-        return "Usuario eliminado correctamente.";
-    } else {
-        throw new NoSuchElementException("El usuario no existe.");
+        if (usuarios.remove(usuario)) {
+            return "Usuario eliminado correctamente.";
+        } else {
+            throw new NoSuchElementException("El usuario no existe.");
+        }
     }
-} 
+
+    // Mostrar usuarios registrados
+    public void mostrarUsuarios() {
+        for (Usuario u : usuarios) {
+            System.out.println(u);
+        }
+    }
+
+    // Delegar manejo de películas a la cartelera
+    public void agregarPelicula(Pelicula pelicula) {
+        cartelera.crearPelicula(pelicula);
+    }
+
+    public void eliminarPelicula(Pelicula pelicula) {
+        cartelera.eliminarPelicula(pelicula.getTitulo());
+    }
+
+    public void mostrarPeliculas() {
+        cartelera.mostrarPeliculas();
+    }
+
     
-    public void mostrarUsuario(){
-        
-    }
-    public String venderBoleta(Usuario usuario, Funcion funcion, String fecha) {
-    Venta nuevaVenta = new Venta();
-    nuevaVenta.calcularTotal();
-
-    if (nuevaVenta.getTotalVenta() < 0) {
-        return "Error: El valor de la boleta no puede ser negativo.";
+    public void agregarFuncion(Funcion funcion) {
+        cartelera.agregarFuncion(funcion);
     }
 
-    this.ventas.add(nuevaVenta);
-    return " Boleta vendida a " + usuario.getNombre() + " por $" + nuevaVenta.getTotalVenta();
+    
+   public String venderBoleta(Usuario usuario, Funcion funcion) {
+    double precioBase = funcion.getPelicula().getCostoBase();
+    double descuentoUsuario = usuario.calcularDescuentoFinal(precioBase);
+    double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
+    double precioFinal = precioBase - descuentoUsuario - descuentoFuncion;
+
+    if (precioFinal < 0) precioFinal = 0;
+
+    Boleta boleta = new Boleta(usuario, funcion, (float) precioFinal);
+
+    Venta venta = new Venta();
+    venta.agregarBoleta(boleta);
+
+    ventas.add(venta);
+
+    return "Boleta vendida a " + usuario.getNombre() + " por $" + precioFinal;
 }
-    public void generarFactura(){
-        
+
+
+    public void generarFacturas() {
+        for (Venta venta : ventas) {
+            venta.generarFactura();
+        }
     }
 }

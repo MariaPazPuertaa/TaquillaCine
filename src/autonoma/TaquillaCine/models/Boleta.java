@@ -32,14 +32,16 @@ public class Boleta {
 
    /**
     * Constructor de la clase Boleta
+     * @param usuario
+     * @param funcion
     * @param precioFinal Es el precio final de la boleta luego de aplicar los descuentos respectivos.
     * @param precioBase Es el precio base de la boleta.
     */
-    public Boleta(Usuario usuario, Funcion funcion, float precioFinal, float precioBase) {     
+    public Boleta(Usuario usuario, Funcion funcion, float precioFinal) {     
         this.usuario = usuario;
         this.funcion = funcion;
         this.precioFinal = precioFinal;
-        this.precioBase = precioBase;
+       this.precioBase = (float) funcion.getPelicula().getCostoBase();
     }
 
     /**

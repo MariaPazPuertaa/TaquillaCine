@@ -33,6 +33,7 @@ public class Cartelera {
      */
     public Cartelera() {
         this.peliculas = new ArrayList<>();
+        this.funciones = new ArrayList<>();
     }
 
     /**
@@ -96,6 +97,38 @@ public class Cartelera {
                 System.out.println("- " + p.getTitulo() + " ($" + p.getCostoBase() + ")");
             }
         }
+    }
+    public void agregarFuncion(Funcion funcion) {
+        funciones.add(funcion);
+        System.out.println("Función agregada para: " + funcion.getPelicula().getTitulo());
+    }
+
+    public void mostrarFunciones() {
+        if (funciones.isEmpty()) {
+            System.out.println("No hay funciones disponibles.");
+        } else {
+            System.out.println("Funciones en cartelera:");
+            for (Funcion f : funciones) {
+                System.out.println("- Función de: " + f.getPelicula().getTitulo());
+            }
+        }
+    }
+
+    public Funcion buscarFuncionPorPelicula(String titulo) {
+        for (Funcion f : funciones) {
+            if (f.getPelicula().getTitulo().equalsIgnoreCase(titulo)) {
+                return f;
+            }
+        }
+        throw new NoSuchElementException("No se encontró función para la película: " + titulo);
+    }
+
+    public ArrayList<Funcion> getFunciones() {
+        return funciones;
+    }
+
+    public ArrayList<Pelicula> getPeliculas() {
+        return peliculas;
     }
 
 }
