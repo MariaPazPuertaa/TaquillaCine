@@ -71,6 +71,12 @@ public class Boleta {
      */
     public void calcularPrecioFinal(float precioBase, Funcion funcion) {
         double descuento = funcion.calcularPorcentajeDescuento(precioBase);
-        this.precioFinal = (float)(precioBase - descuento);
+        float resultado = (float)(precioBase - descuento);
+    
+        if (resultado < 0) {
+            throw new IllegalArgumentException("El precio final no puede ser negativo.");
+        }
+    
+        this.precioFinal = resultado;
     }
 }

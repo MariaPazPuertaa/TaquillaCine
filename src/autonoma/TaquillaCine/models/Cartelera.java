@@ -5,6 +5,7 @@
 package autonoma.TaquillaCine.models;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -39,7 +40,8 @@ public class Cartelera {
     /**
      * Busca una película por su título.
      * @param titulo Es el título de la película a buscar.
-     * @return Retorna la película encontrada o null si no existe.
+     * @return Retorna la película encontrada.
+     * @throws NoSuchElementException Si la película no está en cartelera.
      */
     public Pelicula buscarPelicula(String titulo) {
         for (Pelicula p : peliculas) {
@@ -47,45 +49,40 @@ public class Cartelera {
                 return p;
             }
         }
-        return null;
+        throw new NoSuchElementException("Película no encontrada: " + titulo);
     }
 
     /**
      * Actualiza una película existente en la cartelera.
      * @param tituloOriginal Es el título actual de la película.
      * @param nuevaPelicula Es el objeto con los nuevos datos de la película.
+     * @throws NoSuchElementException Si no se encuentra la película a actualizar.
      */
     public void actualizarPelicula(String tituloOriginal, Pelicula nuevaPelicula) {
         Pelicula encontrada = buscarPelicula(tituloOriginal);
-        if (encontrada != null) {
-            encontrada.setTitulo(nuevaPelicula.getTitulo());
-            encontrada.setCostoBase(nuevaPelicula.getCostoBase());
-            System.out.println("Película actualizada.");
-        } else {
-            System.out.println("Película no encontrada.");
-        }
+        encontrada.setTitulo(nuevaPelicula.getTitulo());
+        encontrada.setCostoBase(nuevaPelicula.getCostoBase());
+        System.out.println("Película actualizada.");
     }
 
     /**
      * Elimina una película de la cartelera por su título.
      * @param titulo Es el título de la película a eliminar.
+     * @throws NoSuchElementException Si la película no está en cartelera.
      */
     public void eliminarPelicula(String titulo) {
         Pelicula encontrada = buscarPelicula(titulo);
-        if (encontrada != null) {
-            peliculas.remove(encontrada);
-            System.out.println("Película eliminada: " + titulo);
-        } else {
-            System.out.println("Película no encontrada.");
-        }
+        peliculas.remove(encontrada);
+        System.out.println("Película eliminada: " + titulo);
     }
 
     /**
      * Muestra todas las películas registradas en la cartelera.
+     * @throws IllegalStateException Si no hay películas para mostrar.
      */
     public void mostrarPeliculas() {
         if (peliculas.isEmpty()) {
-            System.out.println("No hay películas en la cartelera.");
+            throw new IllegalStateException("No hay películas en la cartelera.");
         } else {
             System.out.println("Películas en cartelera:");
             for (Pelicula p : peliculas) {
