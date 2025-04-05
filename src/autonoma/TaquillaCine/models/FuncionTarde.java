@@ -15,8 +15,8 @@ public class FuncionTarde extends Funcion {
 
     /**
      * Constructor de la subclase FuncionTarde, con un descuento fijo del 10%
-     * @param pelicula
-     * @param porcentajeDescuento Es el valor del porcentaje de descuento. 
+     * @param pelicula Es la película que se proyectará en la FuncionTarde.
+     * 
      */
     public FuncionTarde(Pelicula pelicula) {
         super(0.10f,pelicula);
