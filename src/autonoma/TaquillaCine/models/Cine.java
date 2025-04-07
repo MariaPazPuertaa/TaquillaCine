@@ -28,6 +28,8 @@ public class Cine {
     private ArrayList<Usuario> usuarios;
     
     private double totalVentas;
+    
+    private ArrayList<Funcion> funciones;
 
     // Constructor por defecto
     /**

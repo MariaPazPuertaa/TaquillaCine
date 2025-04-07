@@ -18,10 +18,7 @@ import java.util.NoSuchElementException;
  */
 public class Cartelera {
 
-    /**
-     * Lista de funciones en cartelera.
-     */
-    private ArrayList<Funcion> funciones;
+   
     
 
     /**
@@ -35,7 +32,7 @@ public class Cartelera {
      */
     public Cartelera() {
         this.peliculas = new ArrayList<>();
-        this.funciones = new ArrayList<>();
+ 
     }
 
     /**
