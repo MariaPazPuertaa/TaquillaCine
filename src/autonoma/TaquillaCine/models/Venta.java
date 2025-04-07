@@ -86,20 +86,6 @@ public class Venta {
     }
 
     /**
-     * Calcula y actualiza el total de la venta sumando el precio final de cada boleta.
-     * 
-     * @return Total calculado de la venta
-     */
-   public double calcularTotal() {
-    double total = 0;  // Cambiar de float a double
-    for (Boleta boleta : boletas) {
-        total += boleta.getPrecioFinal();
-    }
-    this.totalVenta = total;
-    return total;
-}
-
-    /**
      * Obtiene la fecha de la factura de la venta.
      * 
      * @return Retorna la fecha de la factura de la venta.
@@ -116,6 +102,7 @@ public class Venta {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
+
     
     /**
      * Genera una factura en formato de texto con los detalles de cada boleta.
@@ -146,15 +133,11 @@ public class Venta {
             factura += "Descuento por tipo de usuario: $" + descuentoUsuario + "\n";
             factura += "Total boleta: $ " + precioFinal + "\n";
             factura += "----------------------------\n";
-
             
            
         }
 
-        
-        factura += "TOTAL VENTA: $" + calcularTotal() + "\n";
-        factura += "============================\n";
-
         return factura;
     }
+    
 }

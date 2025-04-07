@@ -15,7 +15,7 @@ public class PrimerFuncion extends Funcion {
 
     /**
      * Es el constructor de la subclase Primera Función, con un descuento fijo del 50%.
-     * @param pelicula
+     * @param pelicula Es la película que se proyectará en la PrimerFuncion.
      */
     public PrimerFuncion(Pelicula pelicula) {
         super(0.50f,pelicula);
