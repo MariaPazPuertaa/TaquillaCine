@@ -75,10 +75,12 @@ public abstract class Funcion {
     public abstract double calcularPorcentajeDescuento(double precioBase);
     
 
+
        public abstract String getDescripcion();
 
     /**
      * Devuelve una representación en forma de cadena de la función.
      * @return Retorna una cadena que representa la función, incluyendo el título de la película.
      */
+
 }
