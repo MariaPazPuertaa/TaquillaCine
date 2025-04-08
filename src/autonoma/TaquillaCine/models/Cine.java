@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * y la generación de facturas.
  * 
  * @author Heily Yohana Rios Ayala<heilyy.riosa@autonoma.edu.co>
- * @author Maria Paz Puerta Acevedo <mariaáp.puertaa@autonoma.edu.co>
+ * @author Maria Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 01042025
  * @version 1.0.0
  */
@@ -139,9 +139,15 @@ public class Cine {
         cartelera.mostrarPeliculas();
     }
 
+    /**
+     * Actualiza los datos de una película existente en la cartelera.
+     * @param tituloOriginal Es el título original de la película que se desea actualizar.
+     * @param nuevaPelicula Es un objeto de tipo Pelicula que contiene los nuevos datos que reemplazarán a los de la película existente.
+     */
     public void actualizarPelicula(String tituloOriginal, Pelicula nuevaPelicula){
          cartelera.actualizarPelicula(tituloOriginal, nuevaPelicula);
     }
+    
     /**
      * Agrega una función (proyección de película) a la cartelera.
      * @param funcion Es la Función que se desea agregar.

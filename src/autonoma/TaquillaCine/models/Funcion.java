@@ -26,7 +26,7 @@ public abstract class Funcion {
     /**
      * Constructor de la clase Funcion
      * @param porcentajeDescuento Es el porcentaje de descuento que se desea aplicar a el precio de la boleta.
-     * @param pelicula
+     * @param pelicula Es el objeto de tipo Pelicula que será proyectado en esta función.
      */
     public Funcion(float porcentajeDescuento, Pelicula pelicula) {
         this.porcentajeDescuento = porcentajeDescuento;
@@ -74,7 +74,10 @@ public abstract class Funcion {
      */
     public abstract double calcularPorcentajeDescuento(double precioBase);
     
-    
+    /**
+     * Devuelve una representación en forma de cadena de la función.
+     * @return Retorna una cadena que representa la función, incluyendo el título de la película.
+     */
     @Override
     public String toString() {
         return "Funcion - Pelicula: " + pelicula.getTitulo();

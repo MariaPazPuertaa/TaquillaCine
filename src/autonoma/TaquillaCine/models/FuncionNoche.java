@@ -33,6 +33,10 @@ public class FuncionNoche extends Funcion {
         return precioBase * getPorcentajeDescuento(); 
     }
     
+    /**
+     * Devuelve una representación en forma de cadena de la función de noche.
+     * @return Retorna una cadena descriptiva de la función de noche y el título de su película.
+     */
     @Override
     public String toString() {
       return "Funcion Noche - Pelicula: " + getPelicula().getTitulo();

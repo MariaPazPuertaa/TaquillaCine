@@ -31,6 +31,10 @@ public class PrimerFuncion extends Funcion {
         return precioBase * getPorcentajeDescuento();
     } 
     
+    /**
+     * Devuelve una representación en forma de cadena de la primera función.
+     * @return Retorna una cadena descriptiva de la primera función y el título de su película.
+     */
     @Override
     public String toString() {
       return "Primera Funcion - Pelicula: " + getPelicula().getTitulo();
