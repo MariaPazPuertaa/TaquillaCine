@@ -10,6 +10,7 @@ import autonoma.TaquillaCine.models.Usuario;
 import autonoma.TaquillaCine.models.UsuarioAdulto;
 import autonoma.TaquillaCine.models.UsuarioMayor;
 import autonoma.TaquillaCine.models.UsuarioNino;
+import java.util.NoSuchElementException;
 
 /**
  * Clase principal que ejecuta la lógica de prueba para el sistema de taquilla del cine.
@@ -53,13 +54,17 @@ public class TaquillaCine {
         
         cine.agregarPelicula(pelicula1);
         cine.agregarPelicula(pelicula2);
-
+        cine.eliminarUsuario(usuario3);
 
 
         
         cine.venderBoleta(usuario1, funcion1);
         cine.venderBoleta(usuario2, funcion2);
-        cine.venderBoleta(usuario3, funcion3);
+        try {
+        cine.venderBoleta(usuario3, funcion3); 
+        } catch (NoSuchElementException e) {
+        System.out.println("Error al vender boleta: " + e.getMessage());
+        }  
         
         cine.mostrarFunciones();
         cine.mostrarPeliculas();
@@ -67,8 +72,19 @@ public class TaquillaCine {
         Pelicula nueva = new Pelicula(6500, "Avatar Remastered");
         cine.actualizarPelicula("Avatar 2", nueva);
         
-
+        cine.mostrarFunciones();
+        cine.mostrarPeliculas();
+        
+        cine.eliminarFuncion(funcion3);
+       
       
         cine.generarFacturas();
+        
+        cine.mostrarFunciones();
+        cine.eliminarPelicula(pelicula2);
+        cine.mostrarPeliculas();
+        
+       
+       
     }
 }

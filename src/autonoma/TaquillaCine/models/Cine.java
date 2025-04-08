@@ -106,6 +106,15 @@ public class Cine {
             throw new NoSuchElementException("El usuario no existe.");
         }
     }
+    
+    public Usuario buscarUsuario(Usuario usuario) {
+        for (Usuario u : usuarios) {
+            if (u.equals(usuario)) {
+                return u;
+            }
+        }
+        throw new NoSuchElementException("El usuario no está registrado.");
+    }
 
     /**
      * Muestra por consola la lista de usuarios registrados.
@@ -168,11 +177,17 @@ public class Cine {
     /**
      * Muestra todas las funciones registradas.
      */
-    public void mostrarFunciones() {
-        for (Funcion f : funciones) {
-            System.out.println(f);
+   public void mostrarFunciones() {
+    System.out.println("Funciones disponibles:");
+    for (Funcion funcion : funciones) {
+        try {
+            cartelera.buscarPelicula(funcion.getPelicula().getTitulo()); 
+            System.out.println(funcion.getDescripcion());
+        } catch (NoSuchElementException e) {
+            
         }
     }
+}
 
     /**
      * Vende una boleta a un usuario para una función específica.
@@ -182,14 +197,18 @@ public class Cine {
      * @return Mensaje de confirmación con el valor final pagado.
      */
     public String venderBoleta(Usuario usuario, Funcion funcion) {
-        double precioBase = funcion.getPelicula().getCostoBase();
+       try {
+        Usuario usuarioValido = buscarUsuario(usuario);
+        Pelicula peliculaDisponible = cartelera.buscarPelicula(funcion.getPelicula().getTitulo());
+
+        double precioBase = peliculaDisponible.getCostoBase();
         double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
         double precioConDescuentoFuncion = precioBase - descuentoFuncion;
-        double precioFinal = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
+        double precioFinal = usuarioValido.calcularDescuentoFinal(precioConDescuentoFuncion);
 
         if (precioFinal < 0) precioFinal = 0;
 
-        Boleta boleta = new Boleta(usuario, funcion);       
+        Boleta boleta = new Boleta(usuarioValido, funcion);
         boleta.calcularPrecioFinal();
 
         Venta venta = new Venta();
@@ -198,7 +217,10 @@ public class Cine {
         ventas.add(venta);
         totalVentas += precioFinal;
 
-        return "Boleta vendida a " + usuario.getNombre() + " por $" + boleta.getPrecioFinal();
+        return "Boleta vendida a " + usuarioValido.getNombre() + " por $" + boleta.getPrecioFinal();
+    } catch (NoSuchElementException e) {
+        return "Error al vender boleta: " + e.getMessage();
+    }
     }
 
     /**

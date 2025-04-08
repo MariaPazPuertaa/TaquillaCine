@@ -74,9 +74,5 @@ public abstract class Funcion {
      */
     public abstract double calcularPorcentajeDescuento(double precioBase);
     
-    
-    @Override
-    public String toString() {
-        return "Funcion - Pelicula: " + pelicula.getTitulo();
-    }
+       public abstract String getDescripcion();
 }

@@ -33,7 +33,7 @@ public class FuncionTarde extends Funcion {
     }
     
     @Override
-    public String toString() {
-      return "Funcion Tarde - Pelicula: " + getPelicula().getTitulo();
+    public String getDescripcion() {
+        return "Funcion Tarde- Pelicula: " + getPelicula().getTitulo();
     }
 }

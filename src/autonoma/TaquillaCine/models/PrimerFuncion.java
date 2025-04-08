@@ -32,7 +32,7 @@ public class PrimerFuncion extends Funcion {
     } 
     
     @Override
-    public String toString() {
-      return "Primera Funcion - Pelicula: " + getPelicula().getTitulo();
+    public String getDescripcion() {
+        return "Primera Funcion  - Pelicula: " + getPelicula().getTitulo();
     }
 }
