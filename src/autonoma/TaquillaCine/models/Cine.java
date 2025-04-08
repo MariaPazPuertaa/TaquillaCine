@@ -175,10 +175,18 @@ public class Cine {
      * Agrega una función (proyección de película) a la cartelera.
      * @param funcion Es la Función que se desea agregar.
      */
-    public void agregarFuncion(Funcion funcion) {
-        cartelera.agregarFuncion(funcion);
+    public String agregarFuncion(Funcion funcion) {
+       funciones.add(funcion);
+       return "Se agrego correctamente la funcion";
     }
 
+    public String eliminarFuncion(Funcion funcion){
+        if (funciones.remove(funcion)){
+                return "Funcion eliminada correctamente";
+        }else{
+             throw new NoSuchElementException("La funcion no existe.");
+        }
+    }
     /**
      * Vende una boleta a un usuario para una función específica.
      * Calcula los descuentos aplicables y registra la venta.
