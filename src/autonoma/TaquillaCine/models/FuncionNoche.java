@@ -34,6 +34,7 @@ public class FuncionNoche extends Funcion {
     }
     
 
+
    /**
     * Devuelve una descripción de la función noche.
     * @return Retorna una cadena que describe la función nocturna y el título de la película asociada.

@@ -74,10 +74,12 @@ public abstract class Funcion {
      */
     public abstract double calcularPorcentajeDescuento(double precioBase);
     
+
     /**
      * Proporciona una descripción de la Funcion.
      * @return Retorna una cadena que contiene la descripción detallada de la Funcion.
      */
     public abstract String getDescripcion();
+
 
 }
