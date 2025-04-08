@@ -29,19 +29,21 @@ public class Boleta {
      * Es el precioBase de la boleta.
      */
     private float precioBase;
+     /**
+     * 
+     */
+ 
 
    /**
     * Constructor de la clase Boleta
     * @param usuario
     * @param funcion
-    * @param precioBase Es el precio base de la boleta.
     */
     public Boleta(Usuario usuario, Funcion funcion) {
         this.usuario = usuario;
         this.funcion = funcion;
         this.precioBase = (float) funcion.getPelicula().getCostoBase();
-        // Calculamos el precio final en el momento de la creación de la boleta
-        calcularPrecioFinal();
+       
     }
     /**
      * Obtiene el precio final de la boleta.
@@ -116,22 +118,20 @@ public class Boleta {
      * @throws IllegalArgumentException Se lanzará está excepción cuando el precio final sea negativo.
      */
     public float calcularPrecioFinal() {
-        // Calcular el descuento por función
+
         double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
         double precioConDescuentoFuncion = precioBase - descuentoFuncion;
 
-        // Calcular el descuento por usuario
+      
         double precioFinalConUsuario = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
 
-        // Verificar que el precio final no sea negativo
+ 
         if (precioFinalConUsuario < 0) {
             throw new IllegalArgumentException("El precio final no puede ser negativo.");
         }
 
-        // Establecer el precio final de la boleta
         this.precioFinal = (float) precioFinalConUsuario;
 
-        // Retornar el precio final calculado
         return this.precioFinal;
     }
 

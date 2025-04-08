@@ -30,4 +30,9 @@ public class PrimerFuncion extends Funcion {
     public double calcularPorcentajeDescuento(double precioBase) {
         return precioBase * getPorcentajeDescuento();
     } 
+    
+    @Override
+    public String toString() {
+      return "Primera Funcion - Pelicula: " + getPelicula().getTitulo();
+    }
 }

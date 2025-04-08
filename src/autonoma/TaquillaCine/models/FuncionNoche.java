@@ -32,4 +32,10 @@ public class FuncionNoche extends Funcion {
     public double calcularPorcentajeDescuento(double precioBase) {
         return precioBase * getPorcentajeDescuento(); 
     }
+    
+    @Override
+    public String toString() {
+      return "Funcion Noche - Pelicula: " + getPelicula().getTitulo();
+    }
+
 }

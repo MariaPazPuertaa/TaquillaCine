@@ -139,13 +139,17 @@ public class Cine {
         cartelera.mostrarPeliculas();
     }
 
+    public void actualizarPelicula(String tituloOriginal, Pelicula nuevaPelicula){
+         cartelera.actualizarPelicula(tituloOriginal, nuevaPelicula);
+    }
     /**
      * Agrega una función (proyección de película) a la cartelera.
      * @param funcion Es la Función que se desea agregar.
+     * @return 
      */
     public String agregarFuncion(Funcion funcion) {
         funciones.add(funcion);
-        return "Se agregó correctamente la función.";
+        return "Se agrego correctamente la funcion.";
     }
 
     /**
@@ -155,9 +159,9 @@ public class Cine {
      */
     public String eliminarFuncion(Funcion funcion) {
         if (funciones.remove(funcion)) {
-            return "Función eliminada correctamente.";
+            return "Funcion eliminada correctamente.";
         } else {
-            throw new NoSuchElementException("La función no existe.");
+            throw new NoSuchElementException("La funcion no existe.");
         }
     }
 

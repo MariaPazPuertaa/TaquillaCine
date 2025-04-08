@@ -37,7 +37,8 @@ public class TaquillaCine {
         Funcion funcion2 = new FuncionTarde(pelicula2);
         Funcion funcion3 = new PrimerFuncion(pelicula2); 
 
-      
+     
+        
         Cine cine = new Cine();
 
        
@@ -49,11 +50,23 @@ public class TaquillaCine {
         cine.agregarUsuario(usuario1);
         cine.agregarUsuario(usuario2);
         cine.agregarUsuario(usuario3);
+        
+        cine.agregarPelicula(pelicula1);
+        cine.agregarPelicula(pelicula2);
+
+
 
         
         cine.venderBoleta(usuario1, funcion1);
         cine.venderBoleta(usuario2, funcion2);
         cine.venderBoleta(usuario3, funcion3);
+        
+        cine.mostrarFunciones();
+        cine.mostrarPeliculas();
+        
+        Pelicula nueva = new Pelicula(6500, "Avatar Remastered");
+        cine.actualizarPelicula("Avatar 2", nueva);
+        
 
       
         cine.generarFacturas();

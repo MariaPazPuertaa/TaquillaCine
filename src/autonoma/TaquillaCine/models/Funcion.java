@@ -73,4 +73,10 @@ public abstract class Funcion {
      * @return Retorna el valor del descuento aplicado sobre el precio base.
      */
     public abstract double calcularPorcentajeDescuento(double precioBase);
+    
+    
+    @Override
+    public String toString() {
+        return "Funcion - Pelicula: " + pelicula.getTitulo();
+    }
 }

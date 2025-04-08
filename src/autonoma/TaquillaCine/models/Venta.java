@@ -26,7 +26,7 @@ public class Venta {
     /**
      * Total acumulado de la venta (suma de precios finales de las boletas).
      */
-  private double totalVenta;
+    private double totalVenta;
     /**
      * Fecha de la factura de la venta.
      */
@@ -114,10 +114,6 @@ public class Venta {
         String factura = "===== FACTURA DE VENTA =====\n";
         factura += "Fecha: " + fecha + "\n";
 
-       
-      
-
-        // Iteramos por todas las boletas y generamos la factura
         for (Boleta boleta : boletas) {
             double precioBase = boleta.getFuncion().getPelicula().getCostoBase();
             double descuentoFuncion = boleta.getFuncion().calcularPorcentajeDescuento(precioBase);

@@ -32,4 +32,8 @@ public class FuncionTarde extends Funcion {
         return precioBase * getPorcentajeDescuento();
     }
     
+    @Override
+    public String toString() {
+      return "Funcion Tarde - Pelicula: " + getPelicula().getTitulo();
+    }
 }

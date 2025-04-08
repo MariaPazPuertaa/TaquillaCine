@@ -46,7 +46,7 @@ public class Cartelera {
      */
     public void crearPelicula(Pelicula pelicula) {
         peliculas.add(pelicula);
-        System.out.println("Película agregada: " + pelicula.getTitulo());
+        System.out.println("Pelicula agregada: " + pelicula.getTitulo());
     }
 
     /**
@@ -61,7 +61,7 @@ public class Cartelera {
                 return p;
             }
         }
-        throw new NoSuchElementException("Película no encontrada: " + titulo);
+        throw new NoSuchElementException("Pelicula no encontrada: " + titulo);
     }
 
     /**
@@ -74,7 +74,7 @@ public class Cartelera {
         Pelicula encontrada = buscarPelicula(tituloOriginal);
         encontrada.setTitulo(nuevaPelicula.getTitulo());
         encontrada.setCostoBase(nuevaPelicula.getCostoBase());
-        System.out.println("Película actualizada.");
+        System.out.println("Pelicula actualizada.");
     }
 
     /**
@@ -85,7 +85,7 @@ public class Cartelera {
     public void eliminarPelicula(String titulo) {
         Pelicula encontrada = buscarPelicula(titulo);
         peliculas.remove(encontrada);
-        System.out.println("Película eliminada: " + titulo);
+        System.out.println("Pelicula eliminada: " + titulo);
     }
 
     /**
@@ -94,9 +94,9 @@ public class Cartelera {
      */
     public void mostrarPeliculas() {
         if (peliculas.isEmpty()) {
-            throw new IllegalStateException("No hay películas en la cartelera.");
+            throw new IllegalStateException("No hay peliculas en la cartelera.");
         } else {
-            System.out.println("Películas en cartelera:");
+            System.out.println("Peliculas en cartelera:");
             for (Pelicula p : peliculas) {
                 System.out.println("- " + p.getTitulo() + " ($" + p.getCostoBase() + ")");
             }
