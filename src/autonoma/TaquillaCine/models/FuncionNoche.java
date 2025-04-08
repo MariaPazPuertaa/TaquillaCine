@@ -34,10 +34,15 @@ public class FuncionNoche extends Funcion {
     }
     
 
+
    
    @Override
     public String getDescripcion() {
         return "Funcion Noche - Pelicula: " + getPelicula().getTitulo();
-    }
 
-}
+    /**
+     * Devuelve una representación en forma de cadena de la función de noche.
+     * @return Retorna una cadena descriptiva de la función de noche y el título de su película.
+     */
+    }
+    }

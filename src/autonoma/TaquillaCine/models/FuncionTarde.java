@@ -32,6 +32,10 @@ public class FuncionTarde extends Funcion {
         return precioBase * getPorcentajeDescuento();
     }
     
+    /**
+     * Devuelve una representación en forma de cadena de la función de tarde.
+     * @return Retorna una cadena descriptiva de la función de tarde y el título de su película.
+     */
     @Override
     public String getDescripcion() {
         return "Funcion Tarde- Pelicula: " + getPelicula().getTitulo();
