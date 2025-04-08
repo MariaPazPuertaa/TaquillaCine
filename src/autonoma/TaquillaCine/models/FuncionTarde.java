@@ -33,7 +33,7 @@ public class FuncionTarde extends Funcion {
     }
     
     /**
-     * Devuelve una representación en forma de cadena de la función de tarde.
+     * Devuelve una descripción de la función tarde.
      * @return Retorna una cadena descriptiva de la función de tarde y el título de su película.
      */
     @Override
