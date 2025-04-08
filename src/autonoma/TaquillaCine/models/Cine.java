@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 /**
- *
- * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
+ * Clase que representa un cine con su cartelera, funciones, usuarios y ventas.
+ * 
+ * Permite la gestión de películas, funciones y usuarios, así como la venta de boletas
+ * y la generación de facturas.
+ * 
+ * @author Heily Yohana Rios Ayala<heilyy.riosa@autonoma.edu.co>
+ * @author Maria Paz Puerta Acevedo <mariaáp.puertaa@autonoma.edu.co>
  * @since 01042025
- * @see 
  * @version 1.0.0
  */
 public class Cine {
@@ -16,19 +20,19 @@ public class Cine {
      * Cartelera que contiene las funciones y películas disponibles en el cine.
      */
     private Cartelera cartelera;
-    
+
     /**
      * Lista de ventas realizadas en el cine.
      */
     private ArrayList<Venta> ventas;
-    
+
     /**
      * Lista de usuarios registrados en el sistema del cine.
      */
     private ArrayList<Usuario> usuarios;
-    
+
     private double totalVentas;
-    
+
     private ArrayList<Funcion> funciones;
 
     // Constructor por defecto
@@ -40,68 +44,33 @@ public class Cine {
         this.cartelera = new Cartelera();
         this.ventas = new ArrayList<>();
         this.usuarios = new ArrayList<>();
+        this.funciones = new ArrayList<>();
         this.totalVentas = 0.0; 
     }
 
-    // Constructor con parámetros
-    /**
-     * Constructor con parámetros para inicializar el cine con datos específicos.
-     * @param cartelera Es la cartelera del cine.
-     * @param ventas Es la lista de ventas realizadas.
-     * @param usuarios Es la lista de usuarios registrados. 
-     */
-    public Cine(Cartelera cartelera, ArrayList<Venta> ventas, ArrayList<Usuario> usuarios) {
-        this.cartelera = cartelera;
-        this.ventas = ventas;
-        this.usuarios = usuarios;
-    }
+    
 
-    // Getters y setters
-    /**
-     * Obtiene la cartelera actual del cine.
-     * @return Retorna la cartelera del cine. 
-     */
+
     public Cartelera getCartelera() {
         return cartelera;
     }
 
-    /**
-     * Establece una nueva cartelera para el cine.
-     * @param cartelera Es la nueva cartelera a establecer. 
-     */
     public void setCartelera(Cartelera cartelera) {
         this.cartelera = cartelera;
     }
 
-    /**
-     * Obtiene la lista de ventas registradas.
-     * @return Retorna la lista de objetos de Venta.
-     */
     public ArrayList<Venta> getVentas() {
         return ventas;
     }
 
-
-    /**
-     * Establece una nueva lista de ventas.
-     * @param ventas Es la lista de ventas a establecer.
-     */
     public void setVentas(ArrayList<Venta> ventas) {
         this.ventas = ventas;
     }
 
-    /**
-     * Obtiene la lista de usuarios registrados.
-     * @return Retorna la lista de objetos de Usuario.
-     */
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
 
-    /**
-     * Establece una nueva lista de usuarios.
-     * @param usuarios Es la lista de usuarios a establecer.
-     */
     public void setUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
@@ -113,7 +82,7 @@ public class Cine {
     public void setTotalVentas(double totalVentas) {
         this.totalVentas = totalVentas;
     }
-    
+
     /**
      * Agrega un usuario a la lista de usuarios registrados.
      * @param usuario El Usuario que se desea agregar.
@@ -126,7 +95,6 @@ public class Cine {
 
     /**
      * Elimina un usuario de la lista de registrados.
-     * 
      * @param usuario Es el Usuario a eliminar.
      * @return Mensaje de confirmación de que el usuario fue eliminado exitosamente.
      * @throws NoSuchElementException Se lanza la excepción si el usuario no se encuentra en la lista.
@@ -176,82 +144,83 @@ public class Cine {
      * @param funcion Es la Función que se desea agregar.
      */
     public String agregarFuncion(Funcion funcion) {
-       funciones.add(funcion);
-       return "Se agrego correctamente la funcion";
+        funciones.add(funcion);
+        return "Se agregó correctamente la función.";
     }
 
-    public String eliminarFuncion(Funcion funcion){
-        if (funciones.remove(funcion)){
-                return "Funcion eliminada correctamente";
-        }else{
-             throw new NoSuchElementException("La funcion no existe.");
+    /**
+     * Elimina una función de la lista.
+     * @param funcion Es la Función a eliminar.
+     * @return Mensaje de confirmación o excepción si no existe.
+     */
+    public String eliminarFuncion(Funcion funcion) {
+        if (funciones.remove(funcion)) {
+            return "Función eliminada correctamente.";
+        } else {
+            throw new NoSuchElementException("La función no existe.");
         }
     }
+
+    /**
+     * Muestra todas las funciones registradas.
+     */
+    public void mostrarFunciones() {
+        for (Funcion f : funciones) {
+            System.out.println(f);
+        }
+    }
+
     /**
      * Vende una boleta a un usuario para una función específica.
      * Calcula los descuentos aplicables y registra la venta.
-     * 
      * @param usuario Es el Usuario que realiza la compra.
      * @param funcion Es la Función a la que asistirá.
      * @return Mensaje de confirmación con el valor final pagado.
      */
     public String venderBoleta(Usuario usuario, Funcion funcion) {
         double precioBase = funcion.getPelicula().getCostoBase();
-
- 
         double descuentoFuncion = funcion.calcularPorcentajeDescuento(precioBase);
         double precioConDescuentoFuncion = precioBase - descuentoFuncion;
-
-  
         double precioFinal = usuario.calcularDescuentoFinal(precioConDescuentoFuncion);
 
         if (precioFinal < 0) precioFinal = 0;
 
- 
-      
         Boleta boleta = new Boleta(usuario, funcion);       
-
-
         boleta.calcularPrecioFinal();
-
 
         Venta venta = new Venta();
         venta.agregarBoleta(boleta);
 
-
         ventas.add(venta);
-        
-         totalVentas += precioFinal;
+        totalVentas += precioFinal;
 
         return "Boleta vendida a " + usuario.getNombre() + " por $" + boleta.getPrecioFinal();
-   }
+    }
+
     /**
      * Genera y muestra por consola las facturas de todas las ventas realizadas.
      */
     public void generarFacturas() {
-        double totalVenta = calcularTotalGeneralDeBoletas(); // total de todas las ventas
+        double totalVenta = calcularTotalGeneralDeBoletas();
         for (Venta venta : ventas) {
             System.out.println(venta.generarFactura());
         }
         System.out.println("===========================================");
-        System.out.println("TOTAL GENERAL DE TODAS LAS VENTAS: $" + calcularTotalGeneralDeBoletas());
+        System.out.println("TOTAL GENERAL DE TODAS LAS VENTAS: $" + totalVenta);
         System.out.println("===========================================\n");
     }
-    
+
     /**
      * Calcula el total de todas las boletas vendidas en todas las ventas.
      * @return Retorna el total general de las boletas.
      */
     public double calcularTotalGeneralDeBoletas() {
         double total = 0.0;
-
         for (Venta venta : ventas) {
             for (Boleta boleta : venta.getBoletas()) {
                 total += boleta.getPrecioFinal();
             }
         }
-
         return total;
     }
 }
-
